@@ -1,1 +1,6 @@
-
+streamlit
+python-docx
+docxtpl
+google-genai
+python-dotenv
+Pillow
