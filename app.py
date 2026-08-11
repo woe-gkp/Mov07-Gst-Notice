@@ -16,7 +16,22 @@ st.title("⚖️ FORM GST MOV-07 Notice Generator")
 st.markdown("उत्तर प्रदेश राज्य कर (सचल दल इकाई) हेतु स्वचालित कारण बताओ नोटिस प्रणाली")
 
 st.sidebar.header("🔑 API Settings")
-api_key = os.getenv("GEMINI_API_KEY")
+import random
+
+# Secrets से आपकी सभी 5 Keys की लिस्ट
+keys_list = [
+    st.secrets.get("GEMINI_API_KEY"),
+    st.secrets.get("GEMINI_API_KEY_1"),
+    st.secrets.get("GEMINI_API_KEY_2"),
+    st.secrets.get("GEMINI_API_KEY_3"),
+    st.secrets.get("GEMINI_API_KEY_4")
+]
+
+# मौजूद और वैध Keys को फ़िल्टर करना
+valid_keys = [k for k in keys_list if k]
+
+# रैंडमली किसी एक Key का चयन
+api_key = random.choice(valid_keys) if valid_keys else None
 if not api_key:
   api_key = st.sidebar.text_input("Gemini API Key दर्ज करें:", type="password")
 if not api_key:
